@@ -26,13 +26,17 @@ const Footer = () => {
           to launch, I&apos;ll help bring your ideas to life with cutting-edge
           solutions.
         </p>
-        <a href="mailto:gpurnachandrashekar@gmail.com">
+        <Link 
+          href="mailto:gpurnachandrashekar@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <MagicButton
             title="Start Your Project"
             icon={<FaLocationArrow />}
             position="right"
           />
-        </a>
+        </Link>
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal sm:text-xs font-light">
