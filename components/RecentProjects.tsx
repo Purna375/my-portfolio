@@ -189,7 +189,7 @@ const RecentProjects = () => {
       github: "https://github.com/Purna375/Virtual_Piano",
     },
     {
-      id: 6,
+      id: 7,
       title: "Kalki AI",
       subtitle: "Next-Gen AI-Powered Learning & Career Platform",
       description:
