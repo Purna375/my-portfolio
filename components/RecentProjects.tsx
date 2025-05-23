@@ -67,7 +67,7 @@ const RecentProjects = () => {
       ],
       status: "Live",
       featured: true,
-      category: "Web Development",
+      category: "Web-Development",
       icon: IoChatbubble, // Replace with appropriate icon from your icon set
       gradient: "from-blue-600 to-pink-500",
       year: "2024",
@@ -95,7 +95,7 @@ const RecentProjects = () => {
       ],
       status: "Live",
       featured: true,
-      category: "Web Development",
+      category: "Web-Development",
       icon: FaGraduationCap, // Replace with appropriate icon from your icon set
       gradient: "from-green-500 to-emerald-400",
       year: "2024",
@@ -205,7 +205,7 @@ const RecentProjects = () => {
       ],
       status: "Under Development",
       featured: true,
-      category: "Web Development",
+      category: "Web-Development",
       icon: IoBulbSharp, // Use an appropriate icon from your icon library
       gradient: "from-indigo-500 to-blue-500",
       year: "2025",
@@ -215,7 +215,7 @@ const RecentProjects = () => {
     },
   ];
 
-  const categories = ["All", "AI/ML", "Web Development"];
+  const categories = ["All", "Web-Development", "AI/ML"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesCategory =
@@ -230,7 +230,7 @@ const RecentProjects = () => {
   });
 
   useEffect(() => {
-    if (typeof window === "undefined") return; 
+    if (typeof window === "undefined") return;
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
@@ -372,8 +372,7 @@ const RecentProjects = () => {
                         animate={{ rotate: [0, 15, -15, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                         className="self-start sm:self-auto"
-                      >
-                      </motion.div>
+                      ></motion.div>
                     )}
                   </div>
                   <p className="text-xs sm:text-xs md:text-sm text-gray-600 dark:text-gray-300 font-medium break-words">
@@ -636,7 +635,7 @@ const RecentProjects = () => {
 
           {/* Enhanced Controls */}
           <motion.div
-            className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center justify-center mb-6 md:mb-8 px-4 max-w-4xl mx-auto"
+            className="flex flex-col md:flex-row gap-3 md:gap-4 items-stretch md:items-center justify-center mb-6 md:mb-14 px-4 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
@@ -674,43 +673,37 @@ const RecentProjects = () => {
                 />
               </motion.button>
 
-              <AnimatePresence>
-                {isFilterOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    className="absolute top-full mt-2 w-full sm:w-48 bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border border-white/20 dark:border-gray-700/30 rounded-xl shadow-2xl z-50 overflow-hidden"
-                  >
-                    {categories.map((category, index) => (
-                      <motion.button
-                        key={category}
-                        onClick={() => {
-                          setSelectedCategory(category);
-                          setIsFilterOpen(false);
-                        }}
-                        className={`w-full text-left px-4 py-2.5 sm:py-3 text-sm transition-all duration-200 ${
-                          selectedCategory === category
-                            ? "bg-blue-500/20 text-blue-600 dark:text-blue-400"
-                            : "text-gray-700 dark:text-gray-300 hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
-                        }`}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        whileHover={{ x: 4 }}
-                      >
-                        {category}
-                      </motion.button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isFilterOpen && (
+                <div className="absolute top-full mt-2 w-full sm:w-48 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-50 overflow-hidden">
+                  {categories.map((category, index) => (
+                    <button
+                      key={category}
+                      onClick={() => {
+                        setSelectedCategory(category);
+                        setIsFilterOpen(false);
+                      }}
+                      className={`
+            w-full text-left px-4 py-3 text-sm cursor-pointer
+            transition-colors duration-150 ease-in-out
+            ${
+              selectedCategory === category
+                ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 font-medium"
+                : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
+            }
+          `}
+                      type="button"
+                    >
+                      {category}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </motion.div>
 
           {/* Project Count */}
           <motion.div
-            className="text-center mb-4"
+            className="text-center md:mb-8 mb-14"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
