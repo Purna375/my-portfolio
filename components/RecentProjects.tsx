@@ -230,6 +230,7 @@ const RecentProjects = () => {
   });
 
   useEffect(() => {
+    if (typeof window === "undefined") return; 
     const handleMouseMove = (e: MouseEvent) => {
       if (containerRef.current) {
         const rect = containerRef.current.getBoundingClientRect();
