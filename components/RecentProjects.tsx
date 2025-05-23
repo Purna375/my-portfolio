@@ -241,7 +241,7 @@ const RecentProjects = () => {
 
     document.addEventListener("mousemove", handleMouseMove);
     return () => document.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, []);
 
   const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     const IconComponent = project.icon;
